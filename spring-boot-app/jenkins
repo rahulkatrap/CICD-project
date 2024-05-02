@@ -6,5 +6,11 @@ pipeline{
                 git 'https://github.com/rahulkatrap/CICD-project.git'
             }
         }
+        stage("bulild"){
+            steps{
+                sh "sudo apt-get update -y && sudo apt-get install maven -y && cd spring-boot-app/"
+                sh " mvn clean package"
+            }
+        }
     }
 }
