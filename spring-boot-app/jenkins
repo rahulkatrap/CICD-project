@@ -1,1 +1,10 @@
-pipeline
+pipeline{
+    agent any
+    stages{
+        stage("git"){
+            steps{
+                git 'https://github.com/rahulkatrap/CICD-project.git'
+            }
+        }
+    }
+}
