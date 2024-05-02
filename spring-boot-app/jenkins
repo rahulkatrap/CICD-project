@@ -21,5 +21,16 @@ pipeline{
                  }
             }
         }
+        stage("Docker build"){
+            steps{
+                sh "docker build -t rkatrap/java ."
+                
+            }
+        }
+        stage("docker push"){
+            steps{
+                sh "echo pending "
+            }
+        }
     }
 }
