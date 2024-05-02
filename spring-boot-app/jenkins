@@ -8,8 +8,17 @@ pipeline{
         }
         stage("bulild"){
             steps{
-                sh "cd spring-boot-app/" 
-                sh " mvn clean package"
+                sh " mvn -f spring-boot-app/pom.xml clean package "
+            }
+        }
+        stage("sonar"){
+            environment {
+                SONAR_URL = "http://13.233.119.61:9000/"
+            }
+            steps{
+                 withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]){
+                     sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+                 }
             }
         }
     }
