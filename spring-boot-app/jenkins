@@ -13,7 +13,7 @@ pipeline{
         }
         stage("sonar"){
             environment {
-                SONAR_URL = "http://3.108.51.222:9000/"
+                SONAR_URL = "https://65.0.20.8:9000/"
             }
             steps{
                  withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]){
@@ -29,7 +29,11 @@ pipeline{
         }
         stage("docker push"){
             steps{
-                sh "echo pending "
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'USER_PASS', usernameVariable: 'USER_NAME')]){
+                    sh "docker login -u $(USER_NAME) -p $(USER_PASS)"
+
+                }
+                sh "docker push"
             }
         }
     }
