@@ -11,7 +11,7 @@ pipeline{
                 sh " mvn -f spring-boot-app/pom.xml clean package "
             }
         }
-        stage("sonar"){
+       /*stage("sonar"){
             environment {
                 SONAR_URL = "http://65.0.20.8:9000/"
             }
@@ -26,7 +26,7 @@ pipeline{
                 sh "docker build -t rkatrap/java spring-boot-app/."
                 
             }
-        }
+        }*/
         stage("docker push"){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'user-pass', usernameVariable: 'user-name')]){
