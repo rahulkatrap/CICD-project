@@ -13,7 +13,7 @@ pipeline{
         }
         stage("sonar"){
             environment {
-                SONAR_URL = "http://65.0.20.8:9000/projects"
+                SONAR_URL = "http://65.0.20.8:9000/"
             }
             steps{
                  withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]){
