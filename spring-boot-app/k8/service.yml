@@ -6,8 +6,8 @@ spec:
   selector:
     app: cicd
   ports:
-  - port: 80
-    targetPort: 9000
-    nodePort: 30005
-    protocol: TCP
+    - protocol: TCP
+      port: 80
+      targetPort: 9000
+      nodePort: 30005
   type: NodePort
