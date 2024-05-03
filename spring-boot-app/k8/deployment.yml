@@ -11,10 +11,11 @@ spec:
       app: cicd
   template:
     metadata: 
-      labels: cicd
+      labels: 
+        app: cicd
     spec:
       containers:
-        - name: cicd-con
+        - name: cicd-deploy
           image: rkatrap/java:latest
           ports:
-            containerPort: 9000
+            - containerPort: 9000
