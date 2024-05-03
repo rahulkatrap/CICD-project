@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cdcd-service
+spec:
+  selector:
+    app: cicd
+  ports:
+  - port: 80
+    targetPort: 9000
+    protocol: TCP
