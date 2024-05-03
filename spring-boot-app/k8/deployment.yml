@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: cicd-deploy
+  labels:
+    app: cicd
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cicd
+  template:
+    metadata: 
+      labels: cicd
+    spec:
+      containers:
+        - name: cicd-con
+          image: rkatrap/java:latest
+          ports:
+            containerPort: 9000
