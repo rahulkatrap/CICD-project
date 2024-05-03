@@ -29,8 +29,8 @@ pipeline{
         }
         stage("docker push"){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'user-pass', usernameVariable: 'user-name')]){
-                    sh "docker login -u ${env.user-name} -p ${env.user-pass}"
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'user_pass', usernameVariable: 'user_name')]){
+                    sh "docker login -u $user_name -p $user_pass"
 
                 }
                 sh "docker push rkatrap/java"
