@@ -33,7 +33,7 @@ pipeline{
                     sh "docker login -u ${env.user-name} -p ${env.user-pass}"
 
                 }
-                sh "docker push"
+                sh "docker push rkatrap/java"
             }
         }
     }
